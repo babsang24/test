@@ -1,0 +1,43 @@
+<beans
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns="http://www.springframework.org/schema/beans"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- ========================= PROPERTY PLACE HOLDER DEFINITION ========================= -->
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:database.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="database" class="kr.ac.kpu.ebiz.spring.lecture2.Database">
+		<property name="username" value="${jdbc.username}"/>
+	</bean>
+
+	<bean id="user" class="kr.ac.kpu.ebiz.spring.lecture2.User">
+		<property name="map">
+			<map>
+				<entry key="name" value="Hong Gil Dong"/>
+				<entry key="email" value="hong@gmail.com"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="members" class="kr.ac.kpu.ebiz.spring.lecture2.Members">
+		<property name="users">
+			<list>
+				<ref bean="user"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="textEditor" class="kr.ac.kpu.ebiz.spring.lecture2.TextEditor">
+		<constructor-arg ref="spellChecker"/>
+	</bean>
+
+	<bean id="spellChecker" class="kr.ac.kpu.ebiz.spring.lecture2.SpellChecker"/>
+
+</beans>

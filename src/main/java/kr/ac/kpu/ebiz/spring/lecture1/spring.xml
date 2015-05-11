@@ -1,0 +1,13 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 운전수가 운전할 자동차는 Santafe입니다. -->
+	<bean id="santafe" class="kr.ac.kpu.ebiz.spring.lecture1.Santafe"/>
+
+	<!-- 운전수를 선언하고 운전수가 운전할 자동차를 설정합니다. -->
+	<bean id="driver" class="kr.ac.kpu.ebiz.spring.lecture1.Driver">
+		<property name="car" ref="santafe"/>
+	</bean>
+
+</beans>

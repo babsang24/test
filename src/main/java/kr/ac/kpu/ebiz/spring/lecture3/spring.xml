@@ -1,0 +1,16 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="user1" class="kr.ac.kpu.ebiz.spring.lecture3.User" factory-method="createUser"/>
+
+
+	<!-- User Factory -->
+	<bean id="userFactory" class="kr.ac.kpu.ebiz.spring.lecture3.UserFactory"/>
+
+	<!-- Create User By User Factory -->
+	<bean id="user2" class="kr.ac.kpu.ebiz.spring.lecture3.User"
+	      factory-bean="userFactory"
+	      factory-method="createUser"/>
+
+</beans>
